@@ -1,0 +1,12 @@
+<h1>My First Angular App</h1>
+
+<form >
+    <h2>Account {{account.accountNumber}}</h2>
+
+    <portfolio [(portfolio)]="account.portfolio" (onIsValidChange)="onPortfolioStatusChanged($event)"></portfolio>
+
+    <div>
+        <label>child form valid: {{portfolioFormValid}}</label>
+    </div>
+    <button [disabled]="!portfolioFormValid" type="submit" (click)="onSave(portfolioFormValid)">Save</button>
+</form>

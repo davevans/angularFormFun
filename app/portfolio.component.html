@@ -1,0 +1,32 @@
+<label>portfolio here</label>
+
+<div [formGroup]="portfolioForm">
+    <div>
+        <label for="cashBalance">{{portfolio.cashBalance}}</label>
+        <input type="text" formControlName="cashBalance" id="cashBalance"/>
+        <label *ngIf="portfolioForm.controls['cashBalance'].hasError('required')">cash balance required</label>
+        <label *ngIf="portfolioForm.controls['cashBalance'].hasError('pattern')">number only</label>
+    <div>
+
+    <div formArrayName="positions">
+        <div *ngFor="let position of portfolioForm.controls.positions.controls; let i=index">
+            <div [formGroupName]="i">
+                <div>
+                    <label>security</label>
+                    <input type="text" formControlName="securityCode"  required/>
+                </div>
+                <div>
+                    <label>volume</label>
+                    <input type="text" formControlName="volume"  />
+                </div>
+                <div>
+                    <label>price</label>
+                    <input type="text" formControlName="price"  />
+                </div>                            
+            </div>
+        </div>
+    </div>        
+
+    <p>{{portfolioForm.value | json}}</p>
+    <p>{{portfolio | json}}</p>
+</div>
